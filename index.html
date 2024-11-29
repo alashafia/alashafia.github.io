@@ -3,52 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactive Portfolio</title>
+  <title>Ala Shafia Portfolio</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <style>
     /* Global Styles */
-    body {
-      font-family: 'Arial', sans-serif;
+    * {
       margin: 0;
       padding: 0;
-      background: #f4f4f9;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
       color: #333;
+      background: #f4f4f4;
       overflow-x: hidden;
     }
 
     header {
-      background: #333;
-      color: white;
-      padding: 20px 0;
-      text-align: center;
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      width: 100%;
+      background: #ffffff;
       z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 10px 20px;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
+    header .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      display: inline-block;
     }
 
-    nav {
-      margin-top: 10px;
+    header nav {
+      display: inline-block;
+      float: right;
     }
 
-    nav a {
-      color: white;
-      text-decoration: none;
+    header nav a {
       margin: 0 15px;
+      text-decoration: none;
+      color: #333;
       font-weight: bold;
       transition: color 0.3s;
     }
 
-    nav a:hover {
-      color: #f4a261;
+    header nav a:hover {
+      color: #f26531;
     }
 
     section {
-      padding: 50px 20px;
-      max-width: 900px;
+      padding: 100px 20px 50px;
+      max-width: 1200px;
       margin: auto;
       text-align: center;
       opacity: 0;
@@ -61,79 +69,73 @@
       transform: translateY(0);
     }
 
-    section h2 {
-      font-size: 2rem;
-      color: #333;
-      margin-bottom: 20px;
-    }
-
-    .portfolio-slider {
+    .intro {
+      height: 100vh;
       display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      gap: 20px;
-      padding: 20px;
-      scrollbar-width: none; /* For Firefox */
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to bottom, #f4f4f9, #e8e8f0);
     }
 
-    .portfolio-slider::-webkit-scrollbar {
-      display: none; /* For Chrome, Safari, and Opera */
-    }
-
-    .portfolio-item {
-      scroll-snap-align: center;
-      min-width: 250px;
-      background: white;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-      flex-shrink: 0;
-    }
-
-    .portfolio-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
-    }
-
-    .portfolio-item img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .portfolio-item h3 {
-      font-size: 1.2rem;
-      margin: 15px;
+    .intro h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
       color: #333;
     }
 
-    button {
-      background: #333;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.3s;
+    .intro p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      color: #555;
     }
 
-    button:hover {
-      background: #f4a261;
+    .projects {
+      background: #fff;
+      padding-top: 50px;
+    }
+
+    .project-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+    }
+
+    .project-item img {
+      width: 300px;
+      margin: 10px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .project-item .details {
+      max-width: 500px;
+      text-align: left;
+      margin: 10px;
+    }
+
+    .project-item .details h3 {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .project-item .details p {
+      font-size: 1rem;
+      color: #555;
     }
 
     footer {
       background: #333;
       color: white;
       text-align: center;
-      padding: 15px;
-      position: relative;
+      padding: 20px;
+      margin-top: 50px;
     }
 
     footer p {
-      margin: 0;
       font-size: 0.9rem;
     }
   </style>
@@ -141,7 +143,7 @@
 <body>
   <!-- Header -->
   <header>
-    <h1>My Portfolio</h1>
+    <div class="logo">Ala Shafia</div>
     <nav>
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
@@ -149,69 +151,70 @@
     </nav>
   </header>
 
+  <!-- Intro Section -->
+  <section class="intro">
+    <h1>Welcome to Ala Shafia's Portfolio</h1>
+    <p>Explore the world of creative product design through Ala's unique projects and design thinking approach.</p>
+  </section>
+
   <!-- About Section -->
   <section id="about">
-    <h2>About Me</h2>
-    <p>Hello! I'm a passionate developer with a knack for creating beautiful and functional web experiences. I specialize in minimalistic designs and user-friendly interfaces.</p>
+    <h2>About Ala Shafia</h2>
+    <p>Ala Shafia is a passionate product designer specializing in crafting meaningful and innovative designs that solve real-world problems.</p>
   </section>
 
   <!-- Projects Section -->
-  <section id="projects">
-    <h2>My Projects</h2>
-    <div class="portfolio-slider">
-      <div class="portfolio-item">
-        <img src="https://via.placeholder.com/300" alt="Project 1">
-        <h3>Project 1</h3>
+  <section id="projects" class="projects">
+    <h2>Selected Projects</h2>
+    <div class="project-item">
+      <img src="https://via.placeholder.com/300" alt="Project 1 Placeholder">
+      <div class="details">
+        <h3>Project 1: Placeholder Title</h3>
+        <p>Description of Project 1 will go here. This is a placeholder text for showcasing the layout.</p>
       </div>
-      <div class="portfolio-item">
-        <img src="https://via.placeholder.com/300" alt="Project 2">
-        <h3>Project 2</h3>
-      </div>
-      <div class="portfolio-item">
-        <img src="https://via.placeholder.com/300" alt="Project 3">
-        <h3>Project 3</h3>
-      </div>
-      <div class="portfolio-item">
-        <img src="https://via.placeholder.com/300" alt="Project 4">
-        <h3>Project 4</h3>
+    </div>
+    <div class="project-item">
+      <img src="https://via.placeholder.com/300" alt="Project 2 Placeholder">
+      <div class="details">
+        <h3>Project 2: Placeholder Title</h3>
+        <p>Description of Project 2 will go here. This is a placeholder text for showcasing the layout.</p>
       </div>
     </div>
   </section>
 
   <!-- Contact Section -->
   <section id="contact">
-    <h2>Contact Me</h2>
-    <p>Feel free to reach out for collaborations or just a friendly chat!</p>
-    <button onclick="alert('Thank you for reaching out! I will contact you soon.')">Get in Touch</button>
+    <h2>Contact Ala Shafia</h2>
+    <p>Interested in collaborating or learning more? Reach out!</p>
+    <p>Email: ala.shafia@example.com</p>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2024 My Portfolio | Designed with love</p>
+    <p>&copy; 2024 Ala Shafia. All rights reserved.</p>
   </footer>
 
+  <!-- jQuery Animation -->
   <script>
-    // Animate sections on scroll
-    const sections = document.querySelectorAll('section');
-    const revealOnScroll = () => {
-      sections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 50) {
-          section.classList.add('visible');
-        }
-      });
-    };
+    $(document).ready(function () {
+      // Scroll animation for sections
+      const revealSections = () => {
+        $('section').each(function () {
+          const rect = this.getBoundingClientRect();
+          if (rect.top < window.innerHeight - 50) {
+            $(this).addClass('visible');
+          }
+        });
+      };
 
-    window.addEventListener('scroll', revealOnScroll);
-    document.addEventListener('DOMContentLoaded', revealOnScroll);
+      $(window).on('scroll', revealSections);
+      revealSections();
 
-    // Portfolio slider: Smooth scroll
-    const slider = document.querySelector('.portfolio-slider');
-    slider.addEventListener('wheel', (e) => {
-      e.preventDefault();
-      slider.scrollBy({
-        left: e.deltaY > 0 ? 200 : -200,
-        behavior: 'smooth'
+      // Smooth scroll for navigation
+      $('header nav a').on('click', function (e) {
+        e.preventDefault();
+        const target = $($(this).attr('href'));
+        $('html, body').animate({ scrollTop: target.offset().top - 50 }, 600);
       });
     });
   </script>
